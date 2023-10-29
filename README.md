@@ -50,6 +50,7 @@ phnmgj9ksym9   spk_hdpmst    replicated   1/1        mkenjis/ubhdpclu_vol_img:la
 $ docker container exec -it <spk_hdpmst ID> bash
 $ hdfs dfs -mkdir /data
 $ hdfs dfs -put adult.data /data
+$ hdfs dfs -mkdir /spark-logs
 ```
 
 7. in spark client node, edit hive-site.xml file
@@ -113,8 +114,7 @@ $ pip2 install numpy
 
 12. run spark-submit in 3 different threads
 ```shell
-$ (/dir1) spark-submit --executor-cores 4 --num-executors 2 --master yarn adult_lreg_pred.py
-$ (/dir2) spark-submit --executor-cores 4 --num-executors 3 --master yarn adult_lreg_pred.py
+$ (/dir1) spark-submit --executor-cores 4 --num-executors 3 --master yarn adult_lreg_pred.py
 $ spark-submit --executor-cores 4 --num-executors 2 --master yarn adult_lreg_pred.py
 ```
 
@@ -123,4 +123,8 @@ $ spark-submit --executor-cores 4 --num-executors 2 --master yarn adult_lreg_pre
 ![yarn query](docs/yarn_during.png)
 
 ![yarn query](docs/yarn_executors.png)
+
+![yarn query](docs/executors.png)
+
+![yarn query](docs/executors_dir1.png)
 
