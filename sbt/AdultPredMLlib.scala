@@ -49,12 +49,12 @@ object AdultPredMLlib {
       arr1
     }
 
+    val rdd1 = rdd.map(x => Array(x(0),x(1).replace("?","Private"),x(2),x(3),x(4),x(5),x(6).replace("?","Prof-specialty"),
+                              x(7),x(8),x(9),x(10),x(11),x(12),x(13).replace("?","United-States"),x(14)))
+
     val concat = mergeArray(rdd,1,3,5,6,8,9,13)
 					 
     val categ_label = rdd.map(x => x(14)).distinct.zipWithIndex.collectAsMap
-
-    val rdd1 = rdd.map(x => Array(x(0),x(1).replace("?","Private"),x(2),x(3),x(4),x(5),x(6).replace("?","Prof-specialty"),
-                              x(7),x(8),x(9),x(10),x(11),x(12),x(13).replace("?","United-States"),x(14)))
 
     val rdd2 = rdd1.map(x => {
       val y = Array(x(0),x(2),x(10),x(11),x(12),categ_label(x(14)))
